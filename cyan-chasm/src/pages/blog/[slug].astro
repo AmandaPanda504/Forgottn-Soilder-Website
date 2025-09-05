@@ -1,0 +1,37 @@
+---
+import { getCollection, getEntryBySlug, type CollectionEntry } from 'astro:content';
+import { Content } from '@astrojs/content';
+
+type BlogEntry = CollectionEntry<'blog'>;
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+if (!slug) {
+  throw new Error('No slug provided.');
+}
+
+const post = await getEntryBySlug('blog', slug);
+
+if (!post) {
+  throw new Error(`No post found for slug: ${slug}`);
+}
+---
+
+<html>
+  <head>
+    <title>{post.data.title}</title>
+  </head>
+  <body>
+    <h1>{post.data.title}</h1>
+    <article>
+      <Content value={post.body} />
+    </article>
+  </body>
+</html>
