@@ -2,10 +2,10 @@ This website was created with Astro, React, DaisyUI and Material UI. It is a web
 
 To run:
 
-- 1.  cd into cyan-chasm <br>
-- 2.  cd into src <br>
-- 3.  execute the command npm run dev <br>
-- 4.  open the browser to http://localhost:4321/ <br>
+- cd into cyan-chasm <br>
+- cd into src <br>
+- execute the command npm run dev <br>
+- open the browser to http://localhost:4321/ <br>
 
 
 
